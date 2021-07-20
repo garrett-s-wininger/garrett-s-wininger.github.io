@@ -26,18 +26,16 @@ jobs:
       run: npm run typecheck
 
     - name: Execute Jest JS Test Runner
-      run: npm test -- --watchAll=false
+      run: npm run test -- --watchAll=false
 
-    - name: Configure SSH Agent for GitHub Authentication
-      if: ${{ github.event_name == 'push' }}
-      env:
-        SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-      run: |
-        ssh-agent -a $SSH_AUTH_SOCK > /dev/null
-        ssh-add - <<< "${{ secrets.GH_PAGE_DEPLOY_ACTION_PRIVATE_KEY }}"
+    - name: Build Production React Bundle
+      run: npm run build
 
     - name: Deploy to GitHub Pages
       if: ${{ github.event_name == 'push' }}
-      run: |
-        npm run build
-        npx gh-pages -b main -d build --repo git@github.com:garrett-s-wininger/garrett-s-wininger.github.io.git -u "GitHub Page Deployment CI <github_page_deployment_ci@example.com>"
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        deploy_key: ${{ secrets.GH_PAGE_DEPLOY_ACTION_PRIVATE_KEY }}
+        external_repository: garrett-s-wininger/garrett-s-wininger.github.io
+        publish_branch: main
+        publish_dir: ./build
