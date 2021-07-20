@@ -8,21 +8,34 @@ on:
 
 jobs:
   main:
-
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
+
     - name: Configure NodeJS v10
       uses: actions/setup-node@v2
       with:
         node-version: 10
         cache: 'npm'
+  
     - name: Install Project Dependencies via NPM
       run: npm ci
+
     - name: Typecheck Available JS Code
       run: npm run typecheck
+
     - name: Execute Jest JS Test Runner
       run: npm test -- --watchAll=false
+
+    - name: Configure SSH Agent for GitHub Authentication
+      if: ${{ github.event_name == 'push' }}
+      env:
+        SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+      run: |
+        ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+        ssh-add - <<< "${{ secrets.GARRETT_S_WININGER_GITHUB_PAGE_SSH_PRIVATE_KEY }}"
+
     - name: Deploy to GitHub Pages
+      if: ${{ github.event_name == 'push' }}
       run: npm run deploy
