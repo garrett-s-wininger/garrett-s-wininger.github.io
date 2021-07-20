@@ -36,12 +36,6 @@ jobs:
         ssh-agent -a $SSH_AUTH_SOCK > /dev/null
         ssh-add - <<< "${{ secrets.GARRETT_S_WININGER_GITHUB_PAGE_SSH_PRIVATE_KEY }}"
 
-    - name: Configure Git Identity Parameters
-      if: ${{ github.event_name == 'push' }}
-      run: |
-        git config user.email "garrett_s_wininger_github_page_deployment_ci_action@example.com"
-        git config user.name "Garrett S Wininger GitHub Page CI Deployment Action"
-
     - name: Deploy to GitHub Pages
       if: ${{ github.event_name == 'push' }}
-      run: npm run deploy
+      run: npx gh-pages -b main -d build --repo git@github.com:garrett-s-wininger/garrett-s-wininger.github.io.git -u "GitHub Page Deployment CI <github_page_deployment_ci@example.com>"
