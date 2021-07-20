@@ -34,7 +34,7 @@ jobs:
         SSH_AUTH_SOCK: /tmp/ssh_agent.sock
       run: |
         ssh-agent -a $SSH_AUTH_SOCK > /dev/null
-        ssh-add - <<< "${{ secrets.GARRETT_S_WININGER_GITHUB_PAGE_SSH_PRIVATE_KEY }}"
+        ssh-add - <<< "${{ secrets.GH_PAGE_DEPLOY_ACTION_PRIVATE_KEY }}"
 
     - name: Deploy to GitHub Pages
       if: ${{ github.event_name == 'push' }}
