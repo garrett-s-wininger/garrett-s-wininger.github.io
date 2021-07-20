@@ -1,4 +1,4 @@
-name: Build, Test, and Deploy to GitHub Pages
+name: GitHub Page Deployment
 
 on:
   push:
@@ -24,3 +24,5 @@ jobs:
       run: npm run typecheck
     - name: Execute Jest JS Test Runner
       run: npm test -- --watchAll=false
+    - name: Deploy to GitHub Pages
+      run: npm run deploy
