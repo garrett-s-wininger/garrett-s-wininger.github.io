@@ -35,7 +35,6 @@ jobs:
       if: ${{ github.event_name == 'push' }}
       uses: peaceiris/actions-gh-pages@v3
       with:
-        deploy_key: ${{ secrets.GH_PAGE_DEPLOY_ACTION_PRIVATE_KEY }}
-        external_repository: garrett-s-wininger/garrett-s-wininger.github.io
-        publish_branch: main
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_branch: gh_pages
         publish_dir: ./build
