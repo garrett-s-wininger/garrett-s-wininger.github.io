@@ -20,5 +20,7 @@ jobs:
         cache: 'npm'
     - name: Install Project Dependencies via NPM
       run: npm ci
+    - name: Typecheck Available JS Code
+      run: npm run typecheck
     - name: Execute Jest JS Test Runner
       run: npm test -- --watchAll=false
