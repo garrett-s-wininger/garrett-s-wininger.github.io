@@ -1,0 +1,7 @@
+.copyrightFooter {
+    align-items: stretch;
+    display: flex;
+    flex-direction: horizontal;
+    grid-row: "footer";
+    justify-content: center;
+}

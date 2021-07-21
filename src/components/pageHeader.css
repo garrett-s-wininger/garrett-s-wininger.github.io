@@ -1,0 +1,7 @@
+.pageHeader {
+    align-items: stretch;
+    display: flex;
+    flex-direction: horizontal;
+    grid-row: "header";
+    justify-content: center;
+}
