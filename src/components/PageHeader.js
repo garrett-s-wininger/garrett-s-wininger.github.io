@@ -1,11 +1,13 @@
 // @flow
-import "./pageHeader.css";
+'use strict';
+import './pageHeader.css';
+import ProfilePicture from './ProfilePicture';
 import * as React from 'react';
 
 const PageHeader = (): React.MixedElement => {
     return (
         <header className="pageHeader">
-            <p>Header</p>
+            <ProfilePicture imageSource="/profile.png" altText="Garrett Wininger" />
         </header>
     );
 }

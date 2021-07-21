@@ -4,4 +4,5 @@
     flex-direction: horizontal;
     grid-row: "footer";
     justify-content: center;
+    margin-bottom: 2rem;
 }

@@ -1,4 +1,5 @@
 // @flow
+'use strict';
 import "./cvContent.css";
 import * as React from 'react';
 
