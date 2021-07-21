@@ -5,8 +5,8 @@ import * as React from 'react';
 
 const styles = {
     profilePicture: {
-        width: '12rem',
-        height: '12rem'
+        width: '8rem',
+        height: '8rem'
     }
 };
 
