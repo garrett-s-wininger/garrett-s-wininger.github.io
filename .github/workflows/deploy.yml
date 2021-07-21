@@ -22,6 +22,9 @@ jobs:
     - name: Install Project Dependencies via NPM
       run: npm ci
 
+    - name: Link Available JS Code
+      run: npm run lint
+
     - name: Typecheck Available JS Code
       run: npm run typecheck
 
