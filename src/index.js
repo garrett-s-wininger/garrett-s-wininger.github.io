@@ -1,5 +1,4 @@
 // @flow
-'use strict';
 import './reset.css';
 
 import App from './App';
