@@ -1,19 +1,28 @@
 // @flow
 import './pageHeader.css';
-import ProfilePicture from './ProfilePicture';
+import Image from './Image';
 import * as React from 'react';
 
 const styles = {
+    profileBackground: {
+        height: '9rem',
+        width: '100%'
+    },
     profilePicture: {
-        width: '8rem',
-        height: '8rem'
+        borderRadius: '50%',
+        height: '8rem',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        transform: 'translate(0, -35%)',
+        width: '8rem'
     }
 };
 
 const PageHeader = (): React.MixedElement => {
     return (
         <header className="pageHeader">
-            <ProfilePicture imageSource="/profile.png" altText="Garrett Wininger" style={styles.profilePicture} />
+            <Image source="/profile_background_light.png" altText="Arch Linux" style={styles.profileBackground} />
+            <Image source="/profile.png" altText="Garrett Wininger" style={styles.profilePicture} />
         </header>
     );
 }

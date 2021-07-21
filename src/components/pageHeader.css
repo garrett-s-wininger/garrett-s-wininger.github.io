@@ -1,8 +1,5 @@
 .pageHeader {
-    align-items: stretch;
-    display: flex;
-    flex-direction: horizontal;
-    grid-row: "header";
-    justify-content: center;
-    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
 }
