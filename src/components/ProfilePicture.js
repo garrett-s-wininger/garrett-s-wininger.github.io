@@ -1,5 +1,4 @@
 // @flow
-'use strict';
 import './profilePicture.css';
 import * as React from 'react';
 

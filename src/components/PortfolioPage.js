@@ -1,5 +1,4 @@
 // @flow
-'use strict';
 import './portfolioPage.css';
 import CopyrightFooter from './CopyrightFooter';
 import CVContent from './CVContent';

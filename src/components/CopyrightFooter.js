@@ -1,5 +1,4 @@
 // @flow
-'use strict';
 import "./copyrightFooter.css";
 import * as React from 'react';
 
