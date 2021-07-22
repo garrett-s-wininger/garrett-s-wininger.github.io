@@ -1,9 +1,15 @@
 .copyrightFooter {
     align-items: stretch;
+    border-top-color: gray;
+    border-top-style: solid;
+    border-top-width: 0.01rem;
     display: flex;
-    flex-direction: horizontal;
+    flex-direction: column;
     grid-row: "footer";
     justify-content: center;
-    margin-bottom: 2rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
     text-align: center;
 }
