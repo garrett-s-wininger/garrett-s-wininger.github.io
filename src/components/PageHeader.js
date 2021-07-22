@@ -9,7 +9,10 @@ const styles = {
         width: '100%'
     },
     profilePicture: {
+        borderColor: 'white',
         borderRadius: '50%',
+        borderStyle: 'solid',
+        borderWidth: '0.25rem',
         height: '8rem',
         marginLeft: 'auto',
         marginRight: 'auto',
