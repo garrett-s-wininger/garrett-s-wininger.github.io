@@ -4,12 +4,13 @@ import * as React from 'react';
 type Props = $ReadOnly<{
     source: string,
     altText: string,
+    dataTestId?: string,
     style?: Object,
 }>;
 
-const Image = ({source, altText, style}: Props): React.MixedElement => {
+const Image = ({source, altText, dataTestId, style}: Props): React.MixedElement => {
     return (
-        <img src={source} alt={altText} style={style} />
+        <img src={source} alt={altText} style={style} data-testid={dataTestId} />
     );
 }
 

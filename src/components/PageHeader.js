@@ -1,8 +1,11 @@
 // @flow
 import './pageHeader.css';
 import Image from './Image';
+import {useState} from 'react';
 import * as React from 'react';
 
+const darkBackgroundImage: string = '/profile_background_dark.png';
+const lightBackgroundImage: string = '/profile_background_light.png';
 const profileBackgroundHeightRem: number = 9;
 const profilePictureBorderWidthRem: number = 0.25;
 const profilePictureAxisRem: number = 8;
@@ -30,9 +33,16 @@ const styles = {
 };
 
 const PageHeader = (): React.MixedElement => {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: light)');
+    const [isLightTheme, setIsLightTheme] = useState(mediaQuery.matches);
+
+    mediaQuery.addEventListener('change', () => {
+        setIsLightTheme(isCurrentlyLightTheme => !isCurrentlyLightTheme);
+    });
+
     return (
         <header className="pageHeader" style={styles.profileHeader}>
-            <Image source="/profile_background_light.png" altText="Arch Linux" style={styles.profileBackground} />
+            <Image dataTestId="profile-background-image" source={isLightTheme ? lightBackgroundImage : darkBackgroundImage} altText="Arch Linux" style={styles.profileBackground} />
             <Image source="/profile.png" altText="Garrett Wininger" style={styles.profilePicture} />
         </header>
     );
