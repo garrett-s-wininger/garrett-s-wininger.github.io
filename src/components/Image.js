@@ -7,10 +7,10 @@ type Props = $ReadOnly<{
     style?: Object,
 }>;
 
-const ProfilePicture = ({source, altText, style}: Props): React.MixedElement => {
+const Image = ({source, altText, style}: Props): React.MixedElement => {
     return (
         <img src={source} alt={altText} style={style} />
     );
 }
 
-export default ProfilePicture;
+export default Image;
