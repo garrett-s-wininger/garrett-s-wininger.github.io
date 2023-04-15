@@ -1,5 +1,29 @@
+:root {
+    color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --anchor-color: black;
+        --background-color: rgb(245, 245, 245);
+        --content-color: white;
+        --grid-link-color: white;
+        --grid-shadow-color: rgb(50, 50, 50);
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --anchor-color: white;
+        --background-color: rgb(30, 30, 30);
+        --content-color: rgb(60, 60, 60);
+        --grid-link-color: rgb(80, 80, 80);
+        --grid-shadow-color: rgb(255, 255, 255);
+    }
+}
+
 a {
-    color: black;
+    color: var(--anchor-color);
 }
 
 a:link {
@@ -8,7 +32,7 @@ a:link {
 
 html, body {
     align-content: normal;
-    background-color: rgb(245, 245, 245);
+    background-color: var(--background-color);
     display: flex;
     flex-direction: column;
     font-family: 'Roboto', sans-serif;
@@ -47,8 +71,8 @@ nav > ol {
 }
 
 nav > ol > li:nth-child(even) {
-    border-left: 1px solid black;
-    border-right: 1px solid black;
+    border-left: 1px solid var(--anchor-color);
+    border-right: 1px solid var(--anchor-color);
 }
 
 nav > ol > li:last-child {
@@ -77,9 +101,9 @@ section > p:not(:first-child) {
 }
 
 .content {
-    background-color: white;
+    background-color: var(--content-color);
     border-radius: 50px;
-    box-shadow: 0px 0px 30px -20px rgb(110, 110, 110);
+    box-shadow: 0px 0px 30px -20px var(--grid-shadow-color);
     display: flex;
     flex-direction: column;
     margin-top: 1em;
@@ -139,7 +163,7 @@ section > p:not(:first-child) {
 
 @media (width < 600px) {
     .content {
-        background-color: rgb(245, 245, 245);
+        background-color: var(--background-color);
         border-radius: 0px;
         box-shadow: none;
         padding: 1.5em;
@@ -169,17 +193,17 @@ section > p:not(:first-child) {
 }
 
 .grid-link {
-    background-color: rgb(255, 255, 255);
+    background-color: var(--grid-link-color);
     border: 0px;
     border-radius: 20px;
-    box-shadow: 0px 0px 15px -5px rgb(50, 50, 50);
+    box-shadow: 0px 0px 15px -5px var(--grid-shadow-color);
     grid-row: auto;
     grid-column: auto;
     padding: 1.5em;
 }
 
 .grid-link:hover {
-    box-shadow: 0px 0px 15px 0px rgb(50, 50, 50);
+    box-shadow: 0px 0px 15px 0px var(--grid-shadow-color);
 }
 
 .indent {
@@ -192,7 +216,6 @@ section > p:not(:first-child) {
 
 .profile-picture {
     border-radius: 50%;
-    outline: black solid 1px;
     height: 128px;
     width: 128px;
 }
