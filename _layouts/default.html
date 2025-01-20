@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="author" content="Garrett Wininger">
+    <meta name="color-scheme" content="light dark">
+    <meta name="robots" content="all">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <title>{{ page.title }}</title>
+  </head>
+  <body>
+    <nav class="navbar" role="navigation" aria-label="Site Navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item"
+            href="/"
+            title="Logo">
+          <picture>
+            <source srcset="static/images/logo-dark.png"
+                media="(prefers-color-scheme: dark)">
+            <img src="static/images/logo.png" alt="Logo">
+          </picture>
+        </a>
+      </div>
+    </nav>
+    {{ content }}
+  </body>
+</html>

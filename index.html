@@ -1,119 +1,164 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width">
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" rel="stylesheet" />
-        <link href="reset.css" rel="stylesheet" />
-        <link href="style.css" rel="stylesheet" />
-        <title>Garrett Wininger</title>
-    </head>
-    <body>
-        <div class="content">
-            <header class="flex-center">
-                <img class="profile-picture" src="assets/images/profile.png" alt="Profile picture" />
-                <h1>Garrett Wininger</h1>
-                <p class="subtitle">Software and Systems Engineer</p>
-            </header>
-            <nav>
-                <ol>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#external">Links</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ol>
-            </nav>
-            <section>
-                <h2 id="about">About Me</h2>
-                <p class="indent">
-                    As a veteran of the IT field, I've spent the last decade developing technical solutions 
-                    for Windows, Linux, and the Web. During this time, I've worked in construction, hospitality,
-                    government, healthcare, defense, social media, and finance. I generally focus on backend
-                    automation through CLIs, APIs, systems development and distributed systems. While not my 
-                    primary focus, I find myself increasingly interested in new programming languages, algorithms, 
-                    computer graphics, scientific applications, and game development.
-                </p>
-                <p class="indent">
-                    Alongside my civlian work I've served and continue to serve the US military in both the
-                    Army Reserve and New York Air National Guard. If I'm not working in one of these capacities, 
-                    it's a good bet that I'm attending to my family and pets, digging through a technical reference,
-                    undertaking a hands-on project (usually coding, electronics, radios, networking, systems, or 
-                    woodworking), or spending time in one of New York's wilderness areas.
-                </p>
-                <p class="indent">
-                    Feel free to check out the rest of the site where you'll find links to sites hosting my work as
-                    well as a listing of methods you can use in order to contact me, if you so choose. Welcome!
-                </p>
-            </section>
-            <section>
-                <h2 id="external">External Links</h2>
-                <p>
-                    The following links will take you to sites hosting my code or other professional statistics:
-                </p>
-                <div class="grid-links">
-                    <a class="grid-link" href="https://github.com/garrett-s-wininger" target="_blank">
-                        <div class="flex-center">
-                            <span class="material-symbols-outlined link-logo">
-                                code
-                            </span>
-                            <p>GitHub</p>
-                        </div>
-                    </a>
-                    <a class="grid-link" href="https://app.hackthebox.com/users/391065" target="_blank">
-                        <div class="flex-center">
-                            <span class="material-symbols-outlined link-logo">
-                                security
-                            </span>
-                            <p>Hack The Box</p>
-                        </div>
-                    </a>
-                    <a class="grid-link" href="https://leetcode.com/user6129Sn/" target="_blank">
-                        <div class="flex-center">
-                            <span class="material-symbols-outlined link-logo">
-                                code
-                            </span>
-                            <p>LeetCode</p>
-                        </div>
-                    </a>
-                </div>
-            </section>
-            <section>
-                <h2 id="contact">Contact Me</h2>
-                <p>
-                    You can currently use the following methods to contact me:
-                </p>
-                <div class="grid-links">
-                    <a class="grid-link" href="mailto:garrett.s.wininger@gmail.com">
-                        <div class="flex-center">
-                            <span class="material-symbols-outlined link-logo">
-                                mail
-                            </span>
-                            <p>E-Mail</p>
-                        </div>
-                    </a>
-                    <a class="grid-link" href="https://www.linkedin.com/in/garrett-wininger" target="_blank">
-                        <div class="flex-center">
-                            <span class="material-symbols-outlined link-logo">
-                                description
-                            </span>
-                            <p>LinkedIn</p>
-                        </div>
-                    </a>
-                    <a class="grid-link" href="https://www.upwork.com/freelancers/~01e3b40f6c8be3ce44" target="_blank">
-                        <div class="flex-center">
-                            <span class="material-symbols-outlined link-logo">
-                                description
-                            </span>
-                            <p>Upwork</p>
-                        </div>
-                    </a>
-                </div>
-            </section>
-        </div>
-    </body>
-    <footer class="flex-center">
-        <p><small>Copyright &copy; Garrett Wininger, 2023 - Present</small></p>
-    </footer>
-</html>
+---
+layout: default
+title: Home
+---
+
+<header class="section">
+  <div class="is-flex is-flex-direction-column">
+    <div class="is-flex is-flex-direction-row is-justify-content-center">
+      <figure class="image is-128x128">
+        <img src="static/images/profile.png"
+            alt="Headshot of Garrett Wininger"
+            class="is-rounded"
+            width="128"
+            height="128">
+      </figure>
+    </div>
+    <div class="is-flex is-flex-direction-row is-justify-content-center">
+      <h1 class="title">Garrett Wininger</h1>
+    </div>
+    <div class="is-flex is-flex-direction-row is-justify-content-center">
+      <h2 class="subtitle">Software and Systems Engineer</h2>
+    </div>
+  </div>
+</header>
+<main class="container">
+  <section class="section">
+    <h2 class="title is-4">About Me</h2>
+    <p>
+      I'm a systems and software engineer who's been in the industry for the
+      last decade working in both Windows and Linux. I've provided solutions
+      for the government, healthcare, defense, marketing automation, and
+      financial industries. A firm believer in learning one level below any
+      problem that I need to solve, I've worked with most major programming
+      languages, networking, cloud providers, and at the operating system level
+      in order to find a solution with proper trade-offs for the task at hand.
+    </p>
+    <p class="mt-4">
+      Outside of the aformentioned work, I also served in the US
+      military for a total of 12 years. The first six were as a member of the US
+      Army where I had primarily focused on munitions logistics with brief
+      stints in theatre-level intelligence and end-user desktop support. After
+      my first enlistment, I joined the US Air Force where I worked with radio
+      frequency systems leading frequency management, equipment inventory,
+      solution engineering, as well as compliance with regulations from federal,
+      military, and international entities.
+    </p>
+    <p class="mt-4">
+      On the personal side, I have a love of learning new things and tackling
+      technical topics where I don't have previous expertise. My general
+      preference is going as low-level as possible with a lot of my time spent
+      looking at game development, operating systems, graphics programming,
+      language implementations, and offensive security.
+    </p>
+  </section>
+  <section class="section">
+    <h2 class="title is-4">Connect</h2>
+    <p>
+      Looking to discuss past, present, or future work? How about sharing
+      thoughts on a topic of mutual interest? Please feel free to use any of the
+      following to get in touch:
+    </p>
+    <div class="level">
+      <div class="level-item has-text-centered mt-6">
+        <a href="mailto:garrett.s.wininger@gmail.com">
+          <picture>
+            <source srcset="static/images/gmail-dark.svg"
+                media="(prefers-color-scheme: dark)" />
+            <img src="static/images/gmail.svg"
+                alt="Email"
+                height="72"
+                width="72" />
+          </picture>
+          <p class="title is-6 mt-3">Email</p>
+        </a>
+      </div>
+      <div class="level-item has-text-centered mt-6">
+        <a href="https://www.linkedin.com/in/garrett-wininger">
+          <picture>
+            <source srcset="static/images/linkedin-dark.png"
+                media="(prefers-color-scheme: dark)" />
+            <img src="static/images/linkedin.png"
+                alt="LinkedIn"
+                height="72"
+                width="72" />
+          </picture>
+          <p class="title is-6 mt-3">LinkedIn</p>
+        </a>
+      </div>
+      <div class="level-item has-text-centered mt-6">
+        <a href="https://www.upwork.com/freelancers/~01e3b40f6c8be3ce44">
+          <picture>
+            <source srcset="static/images/upwork-dark.svg"
+                media="(prefers-color-scheme: dark)" />
+            <img src="static/images/upwork.svg"
+                alt="LinkedIn"
+                height="72"
+                width="72" />
+          </picture>
+          <p class="title is-6 mt-3">Upwork</p>
+        </a>
+      </div>
+  </section>
+  <section class="section">
+    <h2 class="title is-4">Follow my Progress</h2>
+    <p>
+      Interested in following what I am up to in my learning journey? The
+      following links can be used to track my progress:
+    </p>
+    <div class="level">
+      <div class="level-item has-text-centered mt-6">
+        <a href="https://github.com/garrett-s-wininger">
+          <picture>
+            <source srcset="static/images/github-dark.png"
+                media="(prefers-color-scheme: dark)" />
+            <img src="static/images/github.png"
+                alt="GitHub"
+                height="72"
+                width="72" />
+          </picture>
+          <p class="title is-6 mt-3">GitHub</p>
+        </a>
+      </div>
+      <div class="level-item has-text-centered mt-6">
+        <a href="https://app.hackthebox.com/users/391065">
+          <picture>
+            <source srcset="static/images/hackthebox-dark.svg"
+                media="(prefers-color-scheme: dark)" />
+            <img src="static/images/hackthebox.svg"
+                alt="Hack the Box"
+                height="72"
+                width="72" />
+          </picture>
+          <p class="title is-6 mt-3">Hack the Box</p>
+        </a>
+      </div>
+      <div class="level-item has-text-centered mt-6">
+        <a href="https://leetcode.com/user6129Sn/">
+          <picture>
+            <source srcset="static/images/leetcode-dark.svg"
+                media="(prefers-color-scheme: dark)" />
+            <img src="static/images/leetcode.svg"
+                alt="LeetCode"
+                height="72"
+                width="72" />
+          </picture>
+          <p class="title is-6 mt-3">LeetCode</p>
+        </a>
+      </div>
+      <div class="level-item has-text-centered mt-6">
+        <a href="https://tryhackme.com/r/p/garrett.s.wining">
+          <picture>
+            <source srcset="static/images/tryhackme-dark.svg"
+                media="(prefers-color-scheme: dark)" />
+            <img src="static/images/tryhackme.svg"
+                alt="TryHackMe"
+                height="72"
+                width="72" />
+          </picture>
+          <p class="title is-6 mt-3">TryHackMe</p>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
