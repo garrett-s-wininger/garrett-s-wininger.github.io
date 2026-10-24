@@ -1,0 +1,38 @@
+name: Pull Request Validation
+
+on:
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pr-validation-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Validate Checks & Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.4"
+          bundler-cache: true
+
+      - name: Install Pre-K
+        uses: j178/prek-action@v1
+        with:
+          run: false
+
+      - name: Validate Pre-K Config
+        run: prek validate-config prek.toml
+
+      - name: Run Pre-K Checks
+        run: prek run --all-files --show-diff-on-failure
