@@ -1,0 +1,111 @@
+headline: Software and Systems Engineer
+summary: >
+  Software and systems engineer with over a decade of experience across Linux
+  and Windows environments, testing new technologies, and automating complex
+  systems at scale. Experienced across compiled, JVM, and scripting languages
+  as well as operating system internals, distributed build infrastructure, and
+  cloud platforms.
+contact:
+  email: garrett.s.wininger@gmail.com
+  linkedin_url: https://www.linkedin.com/in/garrett-wininger
+  linkedin_label: linkedin.com/in/garrett-wininger
+  github_url: https://github.com/garrett-s-wininger
+  github_label: github.com/garrett-s-wininger
+  website_url: https://garrett-s-wininger.github.io
+  website_label: garrett-s-wininger.github.io
+
+experience:
+  - company: Hudson River Trading
+    roles:
+      - title: Systems Software Engineer
+        dates: Present
+        bullets:
+          - Architected custom Groovy shared libraries, deployment automation, and third-party integrations as the subject matter expert for the firm's Jenkins CI/CD infrastructure.
+          - Engineered eBPF and JVMTI agent-based diagnostic tooling to trace kernel, JVM, and Groovy runtime interactions, increasing platform reliability.
+          - Built Java and Python CLI tooling to automate issue detection and remediation, shifting failure discovery earlier in the development lifecycle.
+          - Implemented Prometheus metric collection, Grafana dashboards, and alerting rules to maintain and exceed service uptime and performance targets.
+          - Developed Gerrit TypeScript plugins and companion Django web applications to streamline and extend code review workflows.
+          - Conducted root-cause forensics on complex Git repository states and resolved source-control performance bottlenecks.
+          - Authored modular SaltStack states for automated, reproducible fleet configuration management.
+
+  - company: Meta Platforms Inc.
+    roles:
+      - title: Production Engineer
+        dates: Aug 2022 - Present
+        bullets:
+          - Built a Python Thrift service for automated PDF watermarking, securing the distribution of 400+ sensitive internal documents.
+          - Reverse-engineered a vendor Objective-C binary to isolate system performance regressions, driving an upstream fix across 66,000+ corporate macOS endpoints.
+      - title: Enterprise Systems Engineer
+        dates: Jan 2021 - Aug 2022
+        bullets:
+          - Contributed open-source enhancements to Pysa and Mariana Trench, expanding static security analysis coverage for ~7,000 engineers across Python, Android, and Java codebases.
+          - Authored Chef cookbooks enforcing removable storage security controls across 100,000+ Windows and macOS endpoints.
+          - Diagnosed and resolved automated test infrastructure failures across JavaScript and Hack CI pipelines supporting releases to 2B+ users.
+          - Conducted technical interviews for coding and systems engineering candidates, evaluating OS internals, systems boundaries, defensive coding, and live debugging.
+          - Developed a native C++ Win32/COM application, MSI installer, and custom build rules to surface automated support links during endpoint device-block events.
+
+  - company: General Dynamics Mission Systems
+    roles:
+      - title: Sr. IT Infrastructure and DevOps Engineer
+        dates: Jul 2020 - Jan 2021
+        bullets:
+          - Automated RHEL STIG hardening using Ansible playbooks, Kickstart, and Packer vCenter templates, cutting provisioning time by 75% while enforcing 180+ additional security controls.
+          - Re-architected a GitLab CI pipeline to refresh RHEL-based Horizon VDI environments in parallel, reducing deployment time by 60%.
+          - Packaged internal operational tooling into cryptographically signed RPMs for tamper-resistant YUM distribution.
+          - Root-caused host CPU stalls to periodic YUM repository syncs and eliminated system starvation using cgroups v2 resource limits.
+      - title: Senior Engineering Support Specialist
+        dates: Jun 2019 - Aug 2019
+        bullets:
+          - Automated a local Kubernetes development stack with BIND DNS, HAProxy load balancing, and custom C++ gRPC services consumed by a TypeScript/Electron desktop client.
+
+  - company: Higher Logic
+    roles:
+      - title: Systems Engineer
+        dates: Sep 2019 - Jul 2020
+        bullets:
+          - Built a Jenkins CI/CD pipeline integrating PHPUnit, npm security audits, Chef InSpec, and Docker builds to fully automate deployments for an internal status platform.
+          - Introduced Terraform for AWS IIS server provisioning, cutting infrastructure spin-up time by 50%.
+          - Engineered cross-region AWS replication for 40+ TB of MSSQL Server backups to guarantee disaster recovery readiness.
+      - title: Junior Systems Engineer
+        dates: Oct 2018 - Jun 2019
+        bullets:
+          - Automated patch compliance verification across 300+ Windows and CentOS hosts using PowerShell, Bash, and Python, reducing audit time by 80%.
+          - Redesigned Windows file storage for high availability using DFS-R and DFS-N, safeguarding 5,000,000+ files.
+      - title: IT Specialist
+        dates: Apr 2018 - Oct 2018
+        bullets:
+          - Built a C# synchronization service between Namely HR and Active Directory for 300+ employees, eliminating manual onboarding and profile updates.
+          - Executed a PowerShell-driven migration of 2 email domains and 200 mailboxes across G-Suite and Office 365, saving $10,000 annually.
+
+  - company: New York State Office of Information Technology Services
+    roles:
+      - title: IT Specialist 2 (Programming)
+        dates: Oct 2015 - Apr 2018
+        bullets:
+          - Developed JavaScript customizations for Microsoft Dynamics CRM intake workflows, streamlining statewide assistance applications for individuals with developmental disabilities.
+
+military:
+  - branch: United States Air Force
+    roles:
+      - title: Installation RF Spectrum Manager
+        dates: Aug 2018 - Present
+      - title: RF Systems Specialist
+        dates: Feb 2018 - Aug 2018
+  - branch: United States Army
+    roles:
+      - title: Ammunition Specialist
+        dates: May 2012 - Feb 2018
+      - title: Lead Intelligence Analyst
+        dates: Aug 2017 - Nov 2017
+      - title: Senior IT Specialist
+        dates: Mar 2017 - Aug 2017
+
+education:
+  - degree: B.S. Information Sciences and Technology
+    school: Penn State
+    year: "2020"
+    specialization: Application Development Specialization
+  - degree: B.S. Security and Risk Analysis
+    school: Penn State
+    year: "2020"
+    specialization: Cybersecurity Specialization

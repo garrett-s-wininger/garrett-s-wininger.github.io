@@ -68,6 +68,24 @@
       });
     }
 
+    var menuToggle = document.getElementById("nav-menu-toggle");
+    var navLinks = document.getElementById("site-nav-links");
+
+    if (menuToggle && navLinks) {
+      menuToggle.addEventListener("click", function () {
+        var isOpen = navLinks.classList.toggle("is-open");
+        menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      });
+
+      var links = navLinks.querySelectorAll("a");
+      for (var i = 0; i < links.length; i++) {
+        links[i].addEventListener("click", function () {
+          navLinks.classList.remove("is-open");
+          menuToggle.setAttribute("aria-expanded", "false");
+        });
+      }
+    }
+
     if (window.matchMedia) {
       var mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
       var onSystemChange = function (e) {

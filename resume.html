@@ -1,0 +1,132 @@
+---
+layout: default
+title: Resume
+permalink: /resume/
+styles:
+  - /static/css/resume.css
+scripts:
+  - /static/js/resume.js
+---
+
+{% assign resume = site.data.resume %}
+
+<div class="page-wrapper resume-wrapper">
+  <header class="hero-card resume-hero">
+    <div class="resume-hero-top">
+      <div class="resume-identity">
+        <span class="hero-eyebrow no-print">
+          <span class="hero-eyebrow-dot" aria-hidden="true"></span>
+          Curriculum Vitae
+        </span>
+        <h1 class="hero-title">Garrett Wininger</h1>
+        <h2 class="hero-subtitle">{{ resume.headline | escape }}</h2>
+      </div>
+      <div class="resume-actions no-print">
+        <button type="button" class="project-btn project-btn--primary" id="print-resume-btn">
+          Print / Save PDF
+        </button>
+      </div>
+    </div>
+
+    <p class="hero-summary resume-summary">
+      {{ resume.summary }}
+    </p>
+
+    <div class="resume-contact-chips" aria-label="Contact Information">
+      <a class="resume-contact-chip" href="mailto:{{ resume.contact.email }}">
+        <span class="resume-contact-chip-label">Email</span>
+        <span class="resume-contact-chip-value">{{ resume.contact.email | escape }}</span>
+      </a>
+      <a class="resume-contact-chip" href="{{ resume.contact.linkedin_url }}" target="_blank" rel="noopener noreferrer">
+        <span class="resume-contact-chip-label">LinkedIn</span>
+        <span class="resume-contact-chip-value">{{ resume.contact.linkedin_label | escape }}</span>
+      </a>
+      <a class="resume-contact-chip" href="{{ resume.contact.github_url }}" target="_blank" rel="noopener noreferrer">
+        <span class="resume-contact-chip-label">GitHub</span>
+        <span class="resume-contact-chip-value">{{ resume.contact.github_label | escape }}</span>
+      </a>
+      <a class="resume-contact-chip" href="{{ resume.contact.website_url }}">
+        <span class="resume-contact-chip-label">Web</span>
+        <span class="resume-contact-chip-value">{{ resume.contact.website_label | escape }}</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="page-main resume-main">
+    <section class="content-section resume-section" aria-labelledby="experience-heading">
+      <div class="section-header">
+        <span class="section-label no-print">Career History</span>
+        <h2 id="experience-heading" class="section-title">Experience</h2>
+      </div>
+
+      <div class="resume-timeline">
+        {% for company in resume.experience %}
+        <article class="resume-company">
+          <h3 class="resume-company-name">{{ company.company | escape }}</h3>
+          <div class="resume-roles">
+            {% for role in company.roles %}
+            <div class="resume-role">
+              <div class="resume-role-header">
+                <span class="resume-role-title">{{ role.title | escape }}</span>
+                <span class="resume-role-dates">{{ role.dates | escape }}</span>
+              </div>
+              <ul class="resume-bullets">
+                {% for bullet in role.bullets %}
+                <li>{{ bullet | escape }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+            {% endfor %}
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+    </section>
+
+    <div class="resume-bottom-grid">
+      <section class="content-section resume-section" aria-labelledby="military-heading">
+        <div class="section-header">
+          <span class="section-label no-print">Service</span>
+          <h2 id="military-heading" class="section-title">Military Experience</h2>
+        </div>
+
+        <div class="resume-timeline">
+          {% for unit in resume.military %}
+          <article class="resume-company">
+            <h3 class="resume-company-name">{{ unit.branch | escape }}</h3>
+            <div class="resume-roles">
+              {% for role in unit.roles %}
+              <div class="resume-role">
+                <div class="resume-role-header">
+                  <span class="resume-role-title">{{ role.title | escape }}</span>
+                  <span class="resume-role-dates">{{ role.dates | escape }}</span>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </article>
+          {% endfor %}
+        </div>
+      </section>
+
+      <section class="content-section resume-section" aria-labelledby="education-heading">
+        <div class="section-header">
+          <span class="section-label no-print">Academic Credentials</span>
+          <h2 id="education-heading" class="section-title">Education</h2>
+        </div>
+
+        <div class="resume-roles">
+          {% for edu in resume.education %}
+          <div class="resume-role">
+            <div class="resume-role-header">
+              <span class="resume-role-title">{{ edu.degree | escape }}</span>
+              <span class="resume-role-dates">{{ edu.school | escape }} | {{ edu.year | escape }}</span>
+            </div>
+            <p class="resume-edu-spec">{{ edu.specialization | escape }}</p>
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
