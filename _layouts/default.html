@@ -3,28 +3,73 @@
   <head>
     <meta charset="utf-8">
     <meta name="author" content="Garrett Wininger">
+    <meta name="description" content="Garrett Wininger, Software and Systems Engineer">
     <meta name="color-scheme" content="light dark">
     <meta name="robots" content="all">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet">
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
-    <title>{{ page.title }}</title>
+    <link
+      rel="stylesheet"
+      href="static/css/style.css">
+    <script src="static/js/theme.js"></script>
+    <title>{{ page.title }} | Garrett Wininger</title>
   </head>
   <body>
-    <nav class="navbar" role="navigation" aria-label="Site Navigation">
-      <div class="navbar-brand">
-        <a class="navbar-item"
-            href="/"
-            title="Logo">
+    <nav class="site-navbar" role="navigation" aria-label="Site Navigation">
+      <div class="site-navbar-inner">
+        <a class="site-brand" href="/" title="Garrett Wininger, Home">
           <picture>
-            <source srcset="static/images/logo-dark.png"
+            <source data-theme-source="dark"
+                srcset="static/images/logo-dark.png"
                 media="(prefers-color-scheme: dark)">
-            <img src="static/images/logo.png" alt="Logo">
+            <img src="static/images/logo.png" alt="Garrett Wininger" width="178" height="28">
           </picture>
         </a>
+        <div class="site-nav-controls">
+          <ul class="site-nav-links">
+            <li><a class="site-nav-link" href="#about">About</a></li>
+            <li><a class="site-nav-link" href="#connect">Connect</a></li>
+            <li><a class="site-nav-link" href="#progress">Progress</a></li>
+          </ul>
+          <button
+            type="button"
+            class="theme-toggle"
+            id="theme-toggle"
+            aria-label="Toggle color theme"
+            title="Switch between light and dark mode">
+            <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+        </div>
       </div>
     </nav>
+
     {{ content }}
+
+    <footer class="site-footer">
+      <div class="site-footer-inner">
+        <span>&copy; {{ "now" | date: "%Y" }} Garrett Wininger. All rights reserved.</span>
+        <span>Software &amp; Systems Engineering</span>
+      </div>
+    </footer>
   </body>
 </html>
