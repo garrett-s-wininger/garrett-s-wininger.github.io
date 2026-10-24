@@ -87,6 +87,58 @@ title: Home
       </div>
     </section>
 
+    <section id="projects" class="content-section" aria-labelledby="projects-heading">
+      <div class="section-header">
+        <span class="section-label">Engineering &amp; Systems</span>
+        <h2 id="projects-heading" class="section-title">Featured Projects</h2>
+        <p class="section-lead">
+          Selected systems and infrastructure projects tailoring the language, runtime,
+	  and architecture to the problem domain:
+        </p>
+      </div>
+
+      <div class="projects-grid">
+        {% for project in site.data.projects %}
+        <article class="project-card">
+          <div class="project-card-top">
+            <div class="project-card-header">
+              <span class="project-status">{{ project.category | escape }}</span>
+              <h3 class="project-card-title">
+                <a href="{{ project.url | relative_url }}">{{ project.name | escape }}</a>
+              </h3>
+            </div>
+            <p class="project-card-summary">
+              {{ project.card_summary }}
+            </p>
+            <div class="project-tradeoff">
+              <span class="project-tradeoff-label">Why This Stack?</span>
+              <p>
+                {{ project.stack_rationale }}
+              </p>
+            </div>
+          </div>
+          <div class="project-card-footer">
+            <div class="hero-tags" aria-label="{{ project.name | escape }} Technologies">
+              {% for tag in project.tags %}
+              <span class="hero-tag">{{ tag | escape }}</span>
+              {% endfor %}
+            </div>
+            <div class="project-card-actions">
+              <a class="project-btn project-btn--primary" href="{{ project.url | relative_url }}">
+                Project Overview
+                <span aria-hidden="true">&rarr;</span>
+              </a>
+              <a class="project-btn project-btn--secondary" href="{{ project.repo_url }}" target="_blank" rel="noopener noreferrer">
+                GitHub Repo
+                <span aria-hidden="true">&#8599;</span>
+              </a>
+            </div>
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+    </section>
+
     <section id="connect" class="content-section" aria-labelledby="connect-heading">
       <div class="section-header">
         <span class="section-label">Get in Touch</span>

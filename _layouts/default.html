@@ -17,26 +17,27 @@
       href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
     <link
       rel="stylesheet"
-      href="static/css/style.css">
-    <script src="static/js/theme.js"></script>
+      href="{{ '/static/css/style.css' | relative_url }}">
+    <script src="{{ '/static/js/theme.js' | relative_url }}"></script>
     <title>{{ page.title }} | Garrett Wininger</title>
   </head>
   <body>
     <nav class="site-navbar" role="navigation" aria-label="Site Navigation">
       <div class="site-navbar-inner">
-        <a class="site-brand" href="/" title="Garrett Wininger, Home">
+        <a class="site-brand" href="{{ '/' | relative_url }}" title="Garrett Wininger, Home">
           <picture>
             <source data-theme-source="dark"
-                srcset="static/images/logo-dark.png"
+                srcset="{{ '/static/images/logo-dark.png' | relative_url }}"
                 media="(prefers-color-scheme: dark)">
-            <img src="static/images/logo.png" alt="Garrett Wininger" width="178" height="28">
+            <img src="{{ '/static/images/logo.png' | relative_url }}" alt="Garrett Wininger" width="178" height="28">
           </picture>
         </a>
         <div class="site-nav-controls">
           <ul class="site-nav-links">
-            <li><a class="site-nav-link" href="#about">About</a></li>
-            <li><a class="site-nav-link" href="#connect">Connect</a></li>
-            <li><a class="site-nav-link" href="#progress">Progress</a></li>
+            <li><a class="site-nav-link" href="{{ '/#about' | relative_url }}">About</a></li>
+            <li><a class="site-nav-link" href="{{ '/#projects' | relative_url }}">Projects</a></li>
+            <li><a class="site-nav-link" href="{{ '/#connect' | relative_url }}">Connect</a></li>
+            <li><a class="site-nav-link" href="{{ '/#progress' | relative_url }}">Progress</a></li>
           </ul>
           <button
             type="button"
