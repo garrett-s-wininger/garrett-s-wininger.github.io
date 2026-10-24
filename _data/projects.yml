@@ -1,0 +1,67 @@
+- id: vectis
+  name: Vectis
+  category: "Self-Hosted CI/CD & Automation"
+  badge: Developer Alpha
+  url: /projects/vectis/
+  repo_url: https://github.com/garrett-s-wininger/vectis
+  card_summary: >
+    A self-hosted build and workflow runner for executing repeatable automation
+    on infrastructure you control. Vectis is built to scale down to a single
+    command on a laptop for local testing, or split apart into independent
+    services for larger deployments, without hiding failure states when networks
+    drop or workers crash.
+  hero_summary: >
+    A self-hosted build and job runner for teams and individuals who want to
+    run CI/CD workflows and repeatable automation on their own hardware,
+    without the operational weight of enterprise-scale platforms.
+  stack_rationale: >
+    Written in <strong>Go</strong> so the entire platform compiles into fast,
+    self-contained binaries with no runtime dependencies. Uses
+    <strong>SQLite</strong> out of the box for zero-setup local runs and
+    <strong>PostgreSQL</strong> + <strong>gRPC</strong> when deployed across
+    multiple machines.
+  tags:
+    - Go
+    - gRPC
+    - Protobuf
+    - PostgreSQL
+    - SQLite
+    - SPIFFE
+    - mTLS
+    - Server-Sent Events
+    - OpenTelemetry
+    - Podman
+
+- id: duriel
+  name: Duriel
+  category: Bare-Metal Virtualization
+  badge: "Systems R&D"
+  url: /projects/duriel/
+  repo_url: https://github.com/garrett-s-wininger/duriel
+  card_summary: >
+    A custom Type-1 hypervisor written from scratch with no host operating
+    system beneath it. Built to explore what happens between motherboard
+    firmware and a running OS, Duriel boots straight from UEFI and brings up
+    isolated Linux virtual machines directly on the hardware.
+  hero_summary: >
+    A from-scratch Type-1 hypervisor written in Zig to explore how modern
+    hardware virtualization works beneath the operating system, booting
+    directly from motherboard firmware to run isolated Linux virtual
+    machines.
+  stack_rationale: >
+    Written in <strong>Zig</strong> for low-level control over memory and CPU
+    structures without hidden allocations, and for its ability to cross-compile
+    <strong>x86_64</strong>, <strong>ARM64</strong>, and
+    <strong>RISC-V</strong> firmware binaries out of the box. Paired with
+    <strong>Nix</strong> to build reproducible Linux guest images for testing.
+  tags:
+    - Zig
+    - UEFI
+    - x86_64
+    - AMD-V (SVM)
+    - AArch64
+    - RISC-V 64
+    - Linux Boot Protocol
+    - Nix
+    - QEMU
+    - KVM

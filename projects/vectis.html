@@ -1,0 +1,172 @@
+---
+layout: default
+title: Vectis
+permalink: /projects/vectis/
+project_id: vectis
+---
+
+{% assign project = site.data.projects | where: "id", page.project_id | first %}
+
+<div class="page-wrapper">
+  <nav class="project-breadcrumb" aria-label="Breadcrumb">
+    <a href="{{ '/#projects' | relative_url }}">&larr; Back to Projects</a>
+  </nav>
+
+  <header class="hero-card">
+    <div class="project-hero-inner">
+      <div class="project-hero-meta">
+        <span class="hero-eyebrow">
+          <span class="hero-eyebrow-dot" aria-hidden="true"></span>
+          {{ project.category | escape }}
+        </span>
+        <span class="project-badge">{{ project.badge | escape }}</span>
+      </div>
+      <h1 class="hero-title">{{ project.name | escape }}</h1>
+      <p class="hero-summary">
+        {{ project.hero_summary }}
+      </p>
+      <div class="hero-tags" aria-label="{{ project.name | escape }} Tech Stack">
+        {% for tag in project.tags %}
+        <span class="hero-tag">{{ tag | escape }}</span>
+        {% endfor %}
+      </div>
+      <div class="project-hero-actions">
+        <a class="project-btn project-btn--primary" href="{{ project.repo_url }}" target="_blank" rel="noopener noreferrer">
+          View on GitHub
+          <span aria-hidden="true">&#8599;</span>
+        </a>
+        <a class="project-btn project-btn--secondary" href="{{ '/projects/duriel/' | relative_url }}">
+          Next Project: Duriel
+          <span aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-main">
+    <section class="content-section" aria-labelledby="vectis-overview-heading">
+      <div class="section-header">
+        <span class="section-label">Motivation</span>
+        <h2 id="vectis-overview-heading" class="section-title">Why Build Vectis?</h2>
+      </div>
+
+      <div class="about-highlights">
+        <div class="highlight-item">
+          <span class="highlight-value">One-Binary Local Mode</span>
+          <span class="highlight-desc">Start the entire platform locally with a single command and an embedded SQLite database.</span>
+        </div>
+        <div class="highlight-item">
+          <span class="highlight-value">Built for Failure Recovery</span>
+          <span class="highlight-desc">Separates database truth from queue delivery so dropped connections or crashed workers can be repaired cleanly.</span>
+        </div>
+        <div class="highlight-item">
+          <span class="highlight-value">Untrusted Code Boundaries</span>
+          <span class="highlight-desc">Treats job execution and secret access as strict security boundaries rather than afterthoughts.</span>
+        </div>
+      </div>
+
+      <div class="about-prose">
+        <p>
+          Most CI/CD and job automation tools fall into one of two extremes:
+          lightweight task runners that struggle as soon as you need multiple
+          machines, or sprawling platforms that are painful to self-host and
+          debug when a job gets stuck.
+        </p>
+        <p>
+          Vectis is designed to bridge that gap. On a single machine,
+          <code>vectis-local</code> launches the entire stack in seconds using
+          SQLite so you can submit jobs, stream live logs, and test workflows
+          with zero external infrastructure. When you need to scale out, those
+          exact same components can be deployed as separate services backed by
+          PostgreSQL.
+        </p>
+        <p>
+          A major focus of the design is <strong>making failures obvious and
+          recoverable</strong>. Instead of assuming the database and the work
+          queue are always in sync, Vectis treats the database as the source of
+          truth and uses a background reconciler to re-queue runs if a handoff
+          is interrupted.
+        </p>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="vectis-tooling-heading">
+      <div class="section-header">
+        <span class="section-label">Technical Decisions</span>
+        <h2 id="vectis-tooling-heading" class="section-title">Why This Stack?</h2>
+        <p class="section-lead">
+          Each tool in Vectis was chosen to keep local development frictionless
+          while supporting distributed deployment when needed:
+        </p>
+      </div>
+
+      <div class="architecture-grid">
+        <div class="arch-card">
+          <h3 class="arch-card-title">Go for Operational Simplicity</h3>
+          <p class="arch-card-body">
+            Go compiles the API, CLI, workers, and local supervisor into fast,
+            self-contained binaries. Its concurrency model is a natural fit for
+            multiplexing log streams, managing worker leases, and coordinating
+            background services.
+          </p>
+        </div>
+
+        <div class="arch-card">
+          <h3 class="arch-card-title">SQLite Locally, PostgreSQL at Scale</h3>
+          <p class="arch-card-body">
+            New users shouldn't have to stand up a database server just to try
+            the tool. Supporting SQLite by default makes local onboarding
+            instant, while PostgreSQL provides the durability and concurrency
+            needed for multi-node environments.
+          </p>
+        </div>
+
+        <div class="arch-card">
+          <h3 class="arch-card-title">gRPC &amp; Server-Sent Events (SSE)</h3>
+          <p class="arch-card-body">
+            Internal services communicate over typed gRPC and Protobuf contracts,
+            while user-facing clients (the CLI and web UI) consume live build
+            output over standard HTTP Server-Sent Events that work cleanly
+            through proxies.
+          </p>
+        </div>
+
+        <div class="arch-card">
+          <h3 class="arch-card-title">SPIFFE mTLS for Job Secrets</h3>
+          <p class="arch-card-body">
+            Rather than passing static credentials around, workers authenticate
+            to the secret broker using short-lived cryptographic identities
+            (SPIFFE), and secrets are only released to workers holding an active
+            claim on a running task.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="vectis-arch-heading">
+      <div class="section-header">
+        <span class="section-label">How It Fits Together</span>
+        <h2 id="vectis-arch-heading" class="section-title">What Makes It Interesting?</h2>
+      </div>
+
+      <div class="spec-list">
+        <div class="spec-item">
+          <span class="spec-name">Split Worker Architecture</span>
+          <span class="spec-detail">Separates the worker process that manages leases and status updates from the execution runtime that actually runs user commands, making it easier to swap between host and VM isolation.</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-name">Self-Healing Queue Handoffs</span>
+          <span class="spec-detail">Submitting a job records it in the database first and returns immediately; if the queue is temporarily unreachable, the reconciler automatically repairs the handoff.</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-name">Multi-Cell Execution</span>
+          <span class="spec-detail">Designed so independent execution cells can run jobs locally and report status back to a central catalog without sharing a single global database lock.</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-name">Built-In Observability</span>
+          <span class="spec-detail">Ships with OpenTelemetry tracing, Prometheus metrics, structured audit logs, and a one-command Podman reference stack for testing realistic deployments.</span>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>

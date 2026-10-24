@@ -1,0 +1,173 @@
+---
+layout: default
+title: Duriel
+permalink: /projects/duriel/
+project_id: duriel
+---
+
+{% assign project = site.data.projects | where: "id", page.project_id | first %}
+
+<div class="page-wrapper">
+  <nav class="project-breadcrumb" aria-label="Breadcrumb">
+    <a href="{{ '/#projects' | relative_url }}">&larr; Back to Projects</a>
+  </nav>
+
+  <header class="hero-card">
+    <div class="project-hero-inner">
+      <div class="project-hero-meta">
+        <span class="hero-eyebrow">
+          <span class="hero-eyebrow-dot" aria-hidden="true"></span>
+          {{ project.category | escape }}
+        </span>
+        <span class="project-badge">{{ project.badge | escape }}</span>
+      </div>
+      <h1 class="hero-title">{{ project.name | escape }}</h1>
+      <p class="hero-summary">
+        {{ project.hero_summary }}
+      </p>
+      <div class="hero-tags" aria-label="{{ project.name | escape }} Tech Stack">
+        {% for tag in project.tags %}
+        <span class="hero-tag">{{ tag | escape }}</span>
+        {% endfor %}
+      </div>
+      <div class="project-hero-actions">
+        <a class="project-btn project-btn--primary" href="{{ project.repo_url }}" target="_blank" rel="noopener noreferrer">
+          View on GitHub
+          <span aria-hidden="true">&#8599;</span>
+        </a>
+        <a class="project-btn project-btn--secondary" href="{{ '/projects/vectis/' | relative_url }}">
+          &larr; Previous Project: Vectis
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-main">
+    <section class="content-section" aria-labelledby="duriel-overview-heading">
+      <div class="section-header">
+        <span class="section-label">Motivation</span>
+        <h2 id="duriel-overview-heading" class="section-title">Why Build a Hypervisor from Scratch?</h2>
+      </div>
+
+      <div class="about-highlights">
+        <div class="highlight-item">
+          <span class="highlight-value">No Host OS Beneath It</span>
+          <span class="highlight-desc">Runs directly on the hardware after UEFI firmware hands over control of the machine.</span>
+        </div>
+        <div class="highlight-item">
+          <span class="highlight-value">Direct Linux Boot</span>
+          <span class="highlight-desc">Acts as its own bootloader to drop a Linux kernel straight into 64-bit execution without GRUB.</span>
+        </div>
+        <div class="highlight-item">
+          <span class="highlight-value">Multi-Architecture Goal</span>
+          <span class="highlight-desc">Structured from day one to compare how x86_64, ARM64, and RISC-V approach hardware virtualization.</span>
+        </div>
+      </div>
+
+      <div class="about-prose">
+        <p>
+          Virtualization is the foundation of modern cloud computing and
+          container isolation, yet for most engineers it remains a black box
+          hidden behind mature tools like KVM, Hyper-V, or Xen. Duriel is a
+          hands-on research project built on my core engineering philosophy: the
+          best way to truly understand a layer of the stack is to build it
+          yourself with zero external dependencies.
+        </p>
+        <p>
+          Unlike Type-2 hypervisors (which run as normal applications inside
+          Windows, macOS, or Linux), Duriel is a <strong>Type-1 (bare-metal)
+          hypervisor</strong>. When the computer powers on, motherboard firmware
+          (UEFI) loads Duriel directly. There is no operating system, no C
+          standard library, and no existing memory manager, so every abstraction
+          has to be built from raw physical memory and CPU registers up.
+        </p>
+        <p>
+          Rather than relying on an external bootloader inside the virtual
+          machine, Duriel also implements the Linux boot protocol directly: it
+          unpacks a Linux kernel image and initial ramdisk into guest memory and
+          boots the guest straight into a working Linux userland.
+        </p>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="duriel-tooling-heading">
+      <div class="section-header">
+        <span class="section-label">Technical Decisions</span>
+        <h2 id="duriel-tooling-heading" class="section-title">Why This Stack?</h2>
+        <p class="section-lead">
+          Bare-metal development traditionally requires a fragile web of C,
+          assembly, and architecture-specific cross-compilers. Duriel uses a
+          modern toolchain to keep the codebase clean and reproducible:
+        </p>
+      </div>
+
+      <div class="architecture-grid">
+        <div class="arch-card">
+          <h3 class="arch-card-title">Zig Instead of C</h3>
+          <p class="arch-card-body">
+            Hardware specifications are full of bit-packed control structures
+            where a single off-by-one bit shift causes a silent triple fault.
+            Zig's bit-level <code>packed struct</code> types and compile-time
+            (<code>comptime</code>) size checks let the compiler verify hardware
+            data structures before the code ever runs.
+          </p>
+        </div>
+
+        <div class="arch-card">
+          <h3 class="arch-card-title">Zero-Friction Cross-Compilation</h3>
+          <p class="arch-card-body">
+            Building firmware for x86_64, ARM64, and RISC-V in C usually means
+            installing three separate compiler toolchains. Zig's built-in build
+            system compiles all three architectures from a single command out of
+            the box.
+          </p>
+        </div>
+
+        <div class="arch-card">
+          <h3 class="arch-card-title">Nix for Reproducible Guests</h3>
+          <p class="arch-card-body">
+            To test a hypervisor, you need a known-good guest operating system.
+            Duriel uses a Nix flake to declaratively build a minimal Linux
+            kernel and BusyBox ramdisk so the test environment is identical on
+            every machine.
+          </p>
+        </div>
+
+        <div class="arch-card">
+          <h3 class="arch-card-title">QEMU &amp; Hardware KVM Testing</h3>
+          <p class="arch-card-body">
+            Paired with automated Make targets that package the EFI System
+            Partition and launch Duriel inside QEMU across x86_64 (with nested
+            KVM hardware acceleration), AArch64, and RISC-V virtual machines.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="duriel-arch-heading">
+      <div class="section-header">
+        <span class="section-label">Engineering Challenges</span>
+        <h2 id="duriel-arch-heading" class="section-title">What Makes It Interesting?</h2>
+      </div>
+
+      <div class="spec-list">
+        <div class="spec-item">
+          <span class="spec-name">Surviving the UEFI Handoff</span>
+          <span class="spec-detail">Transitioning from firmware boot services to owning the raw machine without losing the memory map or crashing the CPU mid-flight.</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-name">Two-Dimensional Memory Isolation</span>
+          <span class="spec-detail">Managing both the hypervisor's own page tables and hardware Nested Page Tables (NPT) so the guest OS thinks it owns physical RAM while remaining completely isolated.</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-name">Bootloader-Free Linux Launch</span>
+          <span class="spec-detail">Skip-loading BIOS/UEFI inside the guest by constructing the Linux setup header and memory map directly in guest RAM and jumping straight to 64-bit kernel code.</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-name">Debugging Without an OS</span>
+          <span class="spec-detail">Wiring Zig's standard logger and panic handler directly to hardware serial ports so crashes print human-readable fault and register state instead of silently rebooting.</span>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
