@@ -3,13 +3,15 @@ layout: default
 title: Duriel
 permalink: /projects/duriel/
 project_id: duriel
+styles:
+  - /static/css/projects.css
 ---
 
 {% assign project = site.data.projects | where: "id", page.project_id | first %}
 
 <div class="page-wrapper">
   <nav class="project-breadcrumb" aria-label="Breadcrumb">
-    <a href="{{ '/#projects' | relative_url }}">&larr; Back to Projects</a>
+    <a href="{{ '/#projects' | relative_url }}">{% include icon-arrow-left.html %} Back to Projects</a>
   </nav>
 
   <header class="hero-card">
@@ -33,10 +35,11 @@ project_id: duriel
       <div class="project-hero-actions">
         <a class="project-btn project-btn--primary" href="{{ project.repo_url }}" target="_blank" rel="noopener noreferrer">
           View on GitHub
-          <span aria-hidden="true">&#8599;</span>
+          {% include icon-arrow-up-right.html %}
         </a>
         <a class="project-btn project-btn--secondary" href="{{ '/projects/vectis/' | relative_url }}">
-          &larr; Previous Project: Vectis
+          {% include icon-arrow-left.html %}
+          Previous Project: Vectis
         </a>
       </div>
     </div>
