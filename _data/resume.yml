@@ -18,7 +18,7 @@ experience:
   - company: Hudson River Trading
     roles:
       - title: Systems Software Engineer
-        dates: Present
+        dates: Jan 2023 - Present
         bullets:
           - Architected custom Groovy shared libraries, deployment automation, and third-party integrations as the subject matter expert for the firm's Jenkins CI/CD infrastructure.
           - Engineered eBPF and JVMTI agent-based diagnostic tooling to trace kernel, JVM, and Groovy runtime interactions, increasing platform reliability.
@@ -31,12 +31,12 @@ experience:
   - company: Meta Platforms Inc.
     roles:
       - title: Production Engineer
-        dates: Aug 2022 - Present
+        dates: Aug 2022 - Dec 2022
         bullets:
           - Built a Python Thrift service for automated PDF watermarking, securing the distribution of 400+ sensitive internal documents.
           - Reverse-engineered a vendor Objective-C binary to isolate system performance regressions, driving an upstream fix across 66,000+ corporate macOS endpoints.
       - title: Enterprise Systems Engineer
-        dates: Jan 2021 - Aug 2022
+        dates: Jan 2021 - Sep 2022
         bullets:
           - Contributed open-source enhancements to Pysa and Mariana Trench, expanding static security analysis coverage for ~7,000 engineers across Python, Android, and Java codebases.
           - Authored Chef cookbooks enforcing removable storage security controls across 100,000+ Windows and macOS endpoints.
@@ -47,14 +47,14 @@ experience:
   - company: General Dynamics Mission Systems
     roles:
       - title: Sr. IT Infrastructure and DevOps Engineer
-        dates: Jul 2020 - Jan 2021
+        dates: Jul 2020 - Aug 2020
         bullets:
           - Automated RHEL STIG hardening using Ansible playbooks, Kickstart, and Packer vCenter templates, cutting provisioning time by 75% while enforcing 180+ additional security controls.
           - Re-architected a GitLab CI pipeline to refresh RHEL-based Horizon VDI environments in parallel, reducing deployment time by 60%.
           - Packaged internal operational tooling into cryptographically signed RPMs for tamper-resistant YUM distribution.
           - Root-caused host CPU stalls to periodic YUM repository syncs and eliminated system starvation using cgroups v2 resource limits.
       - title: Senior Engineering Support Specialist
-        dates: Jun 2019 - Aug 2019
+        dates: Jun 2019 - Sep 2019
         bullets:
           - Automated a local Kubernetes development stack with BIND DNS, HAProxy load balancing, and custom C++ gRPC services consumed by a TypeScript/Electron desktop client.
 
@@ -88,7 +88,7 @@ military:
   - branch: United States Air Force
     roles:
       - title: Installation RF Spectrum Manager
-        dates: Aug 2018 - Present
+        dates: Aug 2018 - Feb 2024
       - title: RF Systems Specialist
         dates: Feb 2018 - Aug 2018
   - branch: United States Army
