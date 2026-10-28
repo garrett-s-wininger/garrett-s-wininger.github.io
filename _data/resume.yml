@@ -1,10 +1,9 @@
 headline: Software and Systems Engineer
 summary: >
-  Software and systems engineer with over a decade of experience across Linux
-  and Windows environments, testing new technologies, and automating complex
-  systems at scale. Experienced across compiled, JVM, and scripting languages
-  as well as operating system internals, distributed build infrastructure, and
-  cloud platforms.
+  Software engineer working on build and source-control infrastructure, from Git
+  and Jenkins performance through the runtime faults under them. Ten years of
+  experience across Linux and Windows, including production engineering and
+  release on-call at Meta.
 contact:
   email: garrett.s.wininger@gmail.com
   linkedin_url: https://www.linkedin.com/in/garrett-wininger
@@ -17,16 +16,16 @@ contact:
 experience:
   - company: Hudson River Trading
     roles:
-      - title: Systems Software Engineer
+      - title: Software Engineer
         dates: Jan 2023 - Present
         bullets:
-          - Architected custom Groovy shared libraries, deployment automation, and third-party integrations as the subject matter expert for the firm's Jenkins CI/CD infrastructure.
-          - Engineered eBPF and JVMTI agent-based diagnostic tooling to trace kernel, JVM, and Groovy runtime interactions, increasing platform reliability.
-          - Built Java and Python CLI tooling to automate issue detection and remediation, shifting failure discovery earlier in the development lifecycle.
-          - Implemented Prometheus metric collection, Grafana dashboards, and alerting rules to maintain and exceed service uptime and performance targets.
-          - Developed Gerrit TypeScript plugins and companion Django web applications to streamline and extend code review workflows.
-          - Conducted root-cause forensics on complex Git repository states and resolved source-control performance bottlenecks.
-          - Authored modular SaltStack states for automated, reproducible fleet configuration management.
+          - Traced slow Git worktree creation to the default checkout.workers setting and cut that time by 66%.
+          - Added an OverlayFS checkout path for automated tooling, dropping initial checkout time by 90% and later worktree adds to under a second.
+          - Built a YAML generator for Jenkinsfiles with lint and local-run tooling so pipeline authors shipped conforming builds without writing Groovy.
+          - Mapped slow I/O to md-raid routing find's reads onto a single disk, and switched those walks to the fd tool so reads spread across the array.
+          - Traced a multi-year Jenkins memory leak to a shared-library call that minted unique class names on invocation and grew ClassLoader.parallelLockMap, then hashed inputs so unchanged calls stopped allocating.
+          - Implemented a near-real-time log offload in Rust for failed Jenkins jobs so analysis could run without engineers pulling logs by hand.
+          - Built a Django-based media store and a Gerrit TypeScript plugin so reviewers could open recordings, asciicasts, screenshots, and logs beside a change.
 
   - company: Meta Platforms Inc.
     roles:
@@ -40,14 +39,13 @@ experience:
         bullets:
           - Contributed open-source enhancements to Pysa and Mariana Trench, expanding static security analysis coverage for ~7,000 engineers across Python, Android, and Java codebases.
           - Authored Chef cookbooks enforcing removable storage security controls across 100,000+ Windows and macOS endpoints.
-          - Diagnosed and resolved automated test infrastructure failures across JavaScript and Hack CI pipelines supporting releases to 2B+ users.
-          - Conducted technical interviews for coding and systems engineering candidates, evaluating OS internals, systems boundaries, defensive coding, and live debugging.
+          - On Facebook release on-call, cleared JavaScript/Hack test failures and infrastructure alerts blocking promotion so site updates reached 2B+ users.
           - Developed a native C++ Win32/COM application, MSI installer, and custom build rules to surface automated support links during endpoint device-block events.
 
   - company: General Dynamics Mission Systems
     roles:
       - title: Sr. IT Infrastructure and DevOps Engineer
-        dates: Jul 2020 - Aug 2020
+        dates: Jul 2020 - Dec 2020
         bullets:
           - Automated RHEL STIG hardening using Ansible playbooks, Kickstart, and Packer vCenter templates, cutting provisioning time by 75% while enforcing 180+ additional security controls.
           - Re-architected a GitLab CI pipeline to refresh RHEL-based Horizon VDI environments in parallel, reducing deployment time by 60%.
@@ -56,49 +54,57 @@ experience:
       - title: Senior Engineering Support Specialist
         dates: Jun 2019 - Sep 2019
         bullets:
-          - Automated a local Kubernetes development stack with BIND DNS, HAProxy load balancing, and custom C++ gRPC services consumed by a TypeScript/Electron desktop client.
+          - Built a local CRI-O, Flannel, and HAProxy Kubernetes stack that ran C++ gRPC services and TypeScript Electron UI on a virtual framebuffer over VNC, catching bugs that previously surfaced only in staging.
 
   - company: Higher Logic
     roles:
       - title: Systems Engineer
         dates: Sep 2019 - Jul 2020
         bullets:
-          - Built a Jenkins CI/CD pipeline integrating PHPUnit, npm security audits, Chef InSpec, and Docker builds to fully automate deployments for an internal status platform.
+          - Upgraded Cachet to a newer PHP version, then deployed it to AWS Fargate through a Jenkins pipeline gated by PHPUnit and InSpec, so internal staff could publish customer-facing status without an engineer.
           - Introduced Terraform for AWS IIS server provisioning, cutting infrastructure spin-up time by 50%.
-          - Engineered cross-region AWS replication for 40+ TB of MSSQL Server backups to guarantee disaster recovery readiness.
+          - Engineered cross-region AWS replication for 40+ TB of MSSQL Server backups, enabling recovery after a region loss.
       - title: Junior Systems Engineer
         dates: Oct 2018 - Jun 2019
         bullets:
           - Automated patch compliance verification across 300+ Windows and CentOS hosts using PowerShell, Bash, and Python, reducing audit time by 80%.
-          - Redesigned Windows file storage for high availability using DFS-R and DFS-N, safeguarding 5,000,000+ files.
+          - Redesigned Windows file storage using DFS-R and DFS-N, removing single points of failure for serving 5,000,000+ files.
       - title: IT Specialist
         dates: Apr 2018 - Oct 2018
         bullets:
           - Built a C# synchronization service between Namely HR and Active Directory for 300+ employees, eliminating manual onboarding and profile updates.
-          - Executed a PowerShell-driven migration of 2 email domains and 200 mailboxes across G-Suite and Office 365, saving $10,000 annually.
+          - Executed a PowerShell-driven migration of 2 email domains and 200 mailboxes across G-Suite and Office 365, saving $10,000 annually through tenant consolidation.
 
   - company: New York State Office of Information Technology Services
     roles:
       - title: IT Specialist 2 (Programming)
         dates: Oct 2015 - Apr 2018
         bullets:
-          - Developed JavaScript customizations for Microsoft Dynamics CRM intake workflows, streamlining statewide assistance applications for individuals with developmental disabilities.
+          - Fixed JavaScript UI regressions during a Dynamics CRM 2011 to 2013 migration so statewide disability-assistance intake forms worked across IE, Chrome, Safari, and Firefox.
 
 military:
-  - branch: United States Air Force
+  - branch: New York Air National Guard
     roles:
-      - title: Installation RF Spectrum Manager
+      - title: Installation Spectrum Manager
         dates: Aug 2018 - Feb 2024
+        bullets:
+          - Extended ground-to-air communications across the Atlantic via radio-over-IP services to ensure contact with arctic operations.
+          - Built an Excel tracker in VBA for personnel training during a system migration, so supervisors did not have to track individual records by hand.
       - title: RF Systems Specialist
         dates: Feb 2018 - Aug 2018
-  - branch: United States Army
+        bullets:
+          - During an active intrusion on an installation network, hardened the affected equipment in place, removed the threat actor, and prevented disruption to ongoing missions.
+  - branch: United States Army Reserve
     roles:
       - title: Ammunition Specialist
         dates: May 2012 - Feb 2018
-      - title: Lead Intelligence Analyst
+      - title: Intelligence Analyst, Deployed
         dates: Aug 2017 - Nov 2017
-      - title: Senior IT Specialist
+      - title: IT Specialist, Deployed
         dates: Mar 2017 - Aug 2017
+        bullets:
+          - Signed for $240k of IT equipment at the company troop operations center, supporting 200 personnel in theater.
+          - Automated the import of spreadsheets through VBA and ActiveX controls, eliminating manual data entry for theater-wide resource tracking.
 
 education:
   - degree: B.S. Information Sciences and Technology
