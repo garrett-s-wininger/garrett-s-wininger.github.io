@@ -101,6 +101,13 @@ scripts:
                   <span class="resume-role-title">{{ role.title | escape }}</span>
                   <span class="resume-role-dates">{{ role.dates | escape }}</span>
                 </div>
+                {% if role.bullets %}
+                <ul class="resume-bullets">
+                  {% for bullet in role.bullets %}
+                  <li>{{ bullet | escape }}</li>
+                  {% endfor %}
+                </ul>
+                {% endif %}
               </div>
               {% endfor %}
             </div>
